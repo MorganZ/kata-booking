@@ -1,9 +1,10 @@
 # Application de reservation 
 
-## first
+## restore dependencies
 
 1 - install dotnet 5.0
-1 - run ./client/yarn
+
+2 - to restore node module : run ./client/yarn
 
 ## how to test 
 

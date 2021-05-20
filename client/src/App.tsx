@@ -48,7 +48,7 @@ function App() {
           )))}
         </select></div>
         <div className="p-2"> <label htmlFor="dateSelect">à la date</label></div>
-        <div className="p-2">   <input id="dateSelect" style={{ width: 150 }} className="form-control" value={activeDate} onChange={handleDateChange} type="date"></input>
+        <div className="p-2">   <input id="dateSelect" style={{ width: 180 }} className="form-control" value={activeDate} onChange={handleDateChange} type="date"></input>
         </div>
       </div>
 

@@ -23,17 +23,17 @@ function App() {
     setActiveRoom(response.data[0]);
   }, []);
 
-  var refreshView = useCallback(async () => {
+  var refreshView = async () => {
     setUpdate(update + 1);
-  }, [update]);
+  };
 
-  var handleChangeRoom = useCallback(async (event: InputEvent) => {
+  var handleChangeRoom = async (event: InputEvent) => {
     setActiveRoom({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text });
-  }, [setActiveRoom]);
+  };
 
-  var handleDateChange = useCallback(async (event: InputEvent) => {
+  var handleDateChange = async (event: InputEvent) => {
     setActiveDate(event.target.value);
-  }, [setActiveDate]);
+  };
 
   return (
 

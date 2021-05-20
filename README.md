@@ -1,11 +1,11 @@
-#Application de reservation 
+# Application de reservation 
 
-##first
+## first
 
 1 - install dotnet 5.0
 1 - run ./client/yarn
 
-##how to test 
+## how to test 
 
 for api run ./apis/booking/dotnet run
 

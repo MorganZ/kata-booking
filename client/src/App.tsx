@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import { BookingApi, RoomApi, } from '../clients/booking/';
 import axios from 'axios';
@@ -7,31 +7,29 @@ import ViewBookings from './components/ViewBookings';
 
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-
-var clientBooking = new BookingApi(undefined, "https://localhost:5001");
-var clientRoom = new RoomApi(undefined, "https://localhost:5001");
+const clientRoom = new RoomApi(undefined, "https://localhost:5001");
 
 function App() {
-  const [update, setUpdate] = React.useState(0);
-  const [rooms, setRooms] = React.useState([]);
-  const [activeRoom, setActiveRoom] = React.useState({ id: "", name: "" });
-  const [activeDate, setActiveDate] = React.useState(new Date().toJSON().substring(0, 10));
+  const [update, setUpdate] = useState(0);
+  const [rooms, setRooms] = useState([]);
+  const [activeRoom, setActiveRoom] = useState({ id: "", name: "" });
+  const [activeDate, setActiveDate] = useState(new Date().toJSON().substring(0, 10));
 
   useEffect(async () => {
-    let response = await clientRoom.apiRoomGet();
+    const response = await clientRoom.apiRoomGet();
     setRooms(response.data as any);
     setActiveRoom(response.data[0]);
   }, []);
 
-  var refreshView = async () => {
+  const refreshView = async () => {
     setUpdate(update + 1);
   };
 
-  var handleChangeRoom = async (event: InputEvent) => {
+  const handleChangeRoom = async (event: InputEvent) => {
     setActiveRoom({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text });
   };
 
-  var handleDateChange = async (event: InputEvent) => {
+  const handleDateChange = async (event: InputEvent) => {
     setActiveDate(event.target.value);
   };
 

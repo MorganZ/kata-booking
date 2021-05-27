@@ -8,7 +8,7 @@ import axios from 'axios';
 
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-var clientBooking = new BookingApi(undefined, "https://localhost:5001");
+const clientBooking = new BookingApi(undefined, "https://localhost:5001");
 
 function ViewBookings({ room, date, update }) {
     const [bookings, setBookings] = React.useState([]);
@@ -16,13 +16,13 @@ function ViewBookings({ room, date, update }) {
 
     useEffect(async () => {
         if (!room.id) return;
-        var response = await clientBooking.apiBookingGet(room.id, new Date(date).toJSON());
+        const response = await clientBooking.apiBookingGet(room.id, new Date(date).toJSON());
         setBookings(response.data as any);
     }, [room, date, update])
 
     const remove = async function (id){
         await clientBooking.apiBookingRemovePost(id);
-        var response = await clientBooking.apiBookingGet(room.id, new Date(date).toJSON());
+        const response = await clientBooking.apiBookingGet(room.id, new Date(date).toJSON());
         setBookings(response.data as any);
     };
 

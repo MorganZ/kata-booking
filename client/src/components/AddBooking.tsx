@@ -6,22 +6,23 @@ import axios from 'axios';
 
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-var clientBooking = new BookingApi(undefined, "https://localhost:5001");
+const clientBooking = new BookingApi(undefined, "https://localhost:5001");
 
 function AddBooking({ room, date, refreshReservation }) {
     const [errorsDisplay, setErrorsDisplay] = React.useState("");
 
-    var addBooking = (event: InputEvent) => {
+    const addBooking = (event: InputEvent) => {
         setErrorsDisplay("");
-        let startHour = document.getElementById("startHour").value;
-        let endHour = document.getElementById("endHour").value;
+        const startHour = document.getElementById("startHour").value;
+        const endHour = document.getElementById("endHour").value;
 
-        let booking = {
+        const booking = {
             roomId: room.id,
             start: new Date(new Date(date + "Z").setUTCHours(startHour)).toJSON(),
             end: new Date(new Date(date + "Z").setUTCHours(endHour)).toJSON(),
             userName: document.getElementById("username").value
         };
+
         clientBooking.apiBookingAddPost(booking).then(() => {
         }).catch((error) => {
             const errors = error.response.data.errors;

@@ -6,6 +6,7 @@ using BookingAPI.Entities;
 using BookingAPI.Infra;
 using BookingAPI.Model;
 using BookingAPI.Service;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -33,10 +34,16 @@ namespace BookingAPI.Controllers
             return _roomService.list();
         }
 
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet("{id}")]
-        public Room GetRoom([FromRoute] Guid id)
+        public ActionResult<Room> GetRoom([FromRoute] Guid id)
         {
-            return _roomService.getById(id);
+            var room = _roomService.getById(id);
+            if(room != null ){
+                return Ok(room);
+            }
+            return NotFound();
         }
     }
 }

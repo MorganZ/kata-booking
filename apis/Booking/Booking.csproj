@@ -19,7 +19,7 @@
   <ItemGroup>
     <Content Remove="swagger.json" />
   </ItemGroup>
-   <Target Name="Generate OpenAPI Specification Document" AfterTargets="Build">
-      <Exec Command="swagger tofile --output ./$(AssemblyName).json $(OutputPath)$(AssemblyName).dll $(OpenApiDocumentName)" ContinueOnError="true" />
-    </Target>
+  <Target Name="Generate OpenAPI Specification Document" AfterTargets="Build">
+    <Exec Command="swagger tofile --output ./$(AssemblyName).json $(OutputPath)$(AssemblyName).dll $(OpenApiDocumentName)" ContinueOnError="true" />
+  </Target>
 </Project>

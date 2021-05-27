@@ -32,6 +32,7 @@ namespace BookingAPI.Controllers
             return _bookingService.listByDay(roomId, date);
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
         [HttpPost("add")]
         public IActionResult Add(AddBookingDTO booking)

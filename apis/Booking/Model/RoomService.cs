@@ -8,27 +8,27 @@ namespace BookingAPI.Service
 {
     public class RoomService
     {
-        readonly IRepository<Room> roomsRepository;
+        readonly IRepository<Room> _roomRepository;
 
         public RoomService(IRepository<Room> rooms)
         {
-            roomsRepository = rooms;
+            _roomRepository = rooms;
         }
 
         public Room getById(Guid id)
         {
-            return (from r in roomsRepository.Query() where r.Id == id select r).FirstOrDefault();
+            return (from r in _roomRepository.Query() where r.Id == id select r).FirstOrDefault();
         }
 
         public IQueryable<Room> list()
         {
-            return roomsRepository.Query();
+            return _roomRepository.Query();
         }
 
         public void add(string name)
         {
-            roomsRepository.Add(new Room() { Id = Guid.NewGuid(), Name = name });
-            roomsRepository.SaveChanges();
+            _roomRepository.Add(new Room() { Id = Guid.NewGuid(), Name = name });
+            _roomRepository.SaveChanges();
         }
     }
 }

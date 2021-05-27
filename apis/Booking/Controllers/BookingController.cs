@@ -42,11 +42,7 @@ namespace BookingAPI.Controllers
                 return Ok();
             }
 
-            var problems = new ProblemDetails()
-            {
-                Type = "conflict",
-                Title = "conflict detected",
-            };
+            var problems = this.ProblemDetailsFactory.CreateProblemDetails(this.HttpContext, 400, "conflict detected","conflict" );
 
             problems.Extensions.Add("errors", new Dictionary<string, List<string>>()
             {
